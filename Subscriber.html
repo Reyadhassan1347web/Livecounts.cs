@@ -45,6 +45,8 @@
       fetch(`https://livecounts.xyz/api/youtube-live-subscriber-count/live/${id}`)
         .then((res) => res.json())
         .then((data) => {
+          console.log("hi")
+          console.log("get data")
           console.log(data)
           count = data.counts[0]
         });
