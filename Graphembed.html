@@ -1,0 +1,63 @@
+<head>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="icon" type="image/png" href="File.png" />
+    <title>livecounts.cs - Embed Graph</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+    </head>
+<body>
+    <div id="chart" style="width: 100%; height: 100%;"></div>
+     <script>
+        const params = new URLSearchParams(window.location.search);
+        var id = params.get("id") || "UCX6OQ3DkcsbYNE6H8uQQuVA";
+
+        const chart = new Highcharts.chart({
+            chart: {
+                renderTo: "chart",
+                type: "line",
+                zoomType: "x",
+                backgroundColor: "transperant",
+                plotBorderColor: "transperant",
+                Animation: true,
+            },
+            title: {
+                text: "",
+            },
+            xAxis: {
+                visible: false,
+            },
+            yAxis: {
+                visible: false,
+            },
+            credits: {
+                enabled: false,
+            },
+            series: [
+              {
+                showInLegend: false,
+                name: "",
+                marker: { enabled: false },
+                color: "whitesmoke",
+                lineColor: "whitesmoke",
+                lineWidth: 4,
+              },
+            ],
+        });
+
+        setInterval(async () => {
+    fetch(`https://livecounts.xyz/api/youtube-live-subscriber-count/live/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (chart.series[0].points.length == 3600)
+          chart.series[0].data[0].remove();
+        chart.series[0].addPoint([
+          Date.now(),
+          Math.floor(data.counts[0]),
+        ]);
+      });
+  }, 2000);
+     </script>
+</body>
