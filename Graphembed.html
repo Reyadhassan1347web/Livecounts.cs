@@ -27,18 +27,47 @@
                 text: "",
             },
             xAxis: {
-                visible: false,
+                type: "datetime",
+                tickPixelInterval: 500,
+                visible: true,
             },
             yAxis: {
-                visible: false,
+                visible: true,
             },
             credits: {
-                enabled: false,
+                enabled: true,
             },
+                  tooltip: {
+        shared: true,
+        formatter: function () {
+          var index = this.points[0].series.xData.indexOf(this.x);
+          var lastY = this.points[0].series.yData[index - 1];
+          var dif = this.y - lastY;
+          var r =
+            Highcharts.dateFormat("%A %b %e, %H:%M:%S", new Date(this.x)) +
+            '<br><span style="color:black">\u25CF </span>' +
+            this.points[0].series.name +
+            ": <b>" +
+            Highcharts.numberFormat(this.y, 0);
+          if (dif < 0) {
+            r +=
+              '<span style="color:#ff0000;font-weight:bold;"> (' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          if (dif > 0) {
+            r +=
+              '<span style="color:#00bb00;font-weight:bold;"> (+' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          return r;
+        },
+      },
             series: [
               {
                 showInLegend: false,
-                name: "",
+                name: "Subscribers",
                 marker: { enabled: false },
                 color: "whitesmoke",
                 lineColor: "whitesmoke",
