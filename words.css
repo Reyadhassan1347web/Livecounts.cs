@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+:root {
+    --text-color: #fff;
+    --font: "Roboto"
+}
+
+body {
+    background-color: black;
+    color: var(--text-color);
+    font-family: var(--font);
+    margin: 10px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    background: rgb(0, 0, 0);
+    border-radius: 30px;
+    width: 87.0%;
+    height: -200px;
+    margin-left: 5.9vw;
+    margin-bottom: 35px;
+  }
+  
+  .card,
+  p {
+    text-align: center;
+  }
+
+a {
+    text-decoration: none;
+    color: white;
+    transition: 300ms;
+  }
+  
+  a:hover {
+    color: red;
+  }
