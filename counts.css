@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+body {
+    background-color: black;
+}
+
+#count {
+  width: 100%;
+  margin-top: -50px;
+  text-align: center;
+  color: white;
+  font-family: "Roboto";
+  font-size: 120pt;
+}
+
+.header {
+  color: rgb(255, 255, 255);
+  font-size: 2.5vw;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.subheader {
+  font-size: 1.9vw;
+  color: #afadad;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  margin-top: -5px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+h1 {
+  width: 100%;
+  margin-top: -58px;
+  color: whitesmoke;
+  text-align: center;
+  font-family: "Ubuntu";
+  font-size: 40pt;
+}
+
+#avatar {
+  margin-bottom: 50px;
+  margin-top: 5px;
+  margin-left: 870px;
+  border-radius: 30%;
+  border-style: groove;
+}
