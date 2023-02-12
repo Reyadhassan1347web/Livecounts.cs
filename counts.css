@@ -35,12 +35,12 @@ h2 {
   font-weight: bold;
 }
 
-h1 {
+#name {
   width: 100%;
-  margin-top: -58px;
+  margin-top: -50px;
   color: whitesmoke;
   text-align: center;
-  font-family: "Ubuntu";
+  font-family: "Roboto";
   font-size: 40pt;
 }
 
