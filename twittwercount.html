@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Livecounts.cs - YouTube Subscriber Count</title>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <link rel="icon" type="image/png" href="https://yt3.ggpht.com/bcMDza9uFoby4lqwbl25I_Kobcyt4j5bTHKRilf3Bq99jYaWlvZVPNX4dmXUSE06TVZf3htGXQ=s88-c-k-c0x00ffffff-no-rj-mo" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Comaptible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Comaptible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./livecounts.nl - YouTube Live Subscriber Count (livecounts.net Theme)_files/odometer.css" />
+    <script src="odometer.js"></script>
+    <link rel="stylesheet" href="counts.css" />
+    <script src="Livecounts.js"></script>
+  </head>
+    <body>
+      <img src="File.png" 
+      alt="" 
+      class="rounded-full h-40 absolute top-[108px]"
+      id="avatar"
+      width="150"
+      />
+      <p id="name" onclick="search()">Loading...</p>
+     <span id="subscribers" class="odometer">0</span>
+     <h2 class="subheader">
+        Subscribers <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 12">
+          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+        </svg>
+     </h2>
+     <style>
+      a { size: 50px; }
+    </style>
+    <div id="chart" class="w-full">
+    </div>
+    </body>
+    <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get("id") || "MrBeast";
+    var count = 0;
+
+    const lineColor = "#858585";
+    const chart = new Highcharts.chart({
+      chart: {
+        renderTo: "chart",
+        type: "line",
+        zoomType: "x",
+        backgroundColor: "transparent",
+        plotBorderColor: "transparent",
+        animation: true,
+      },
+      title: {
+        text: "",
+      },
+      xAxis: {
+        type: "datetime",
+        tickPixelInterval: 500,
+        labels: {
+          style: {
+            color: lineColor,
+          },
+        },
+        gridLineColor: lineColor,
+        lineColor: lineColor,
+        minorGridLineColor: "#858585",
+        tickColor: lineColor,
+        title: {
+          style: {
+            color: lineColor,
+          },
+        },
+      },
+      yAxis: {
+        title: {
+          text: "",
+        },
+        labels: {
+          style: {
+            color: lineColor,
+          },
+        },
+        gridLineColor: lineColor,
+        lineColor: lineColor,
+        minorGridLineColor: "#858585",
+        tickColor: lineColor,
+      },
+      credits: {
+        enabled: true,
+        text: "Livecounts.cs",
+        href: "https://livecounts.tk",
+      },
+      tooltip: {
+        shared: true,
+        formatter: function () {
+          var index = this.points[0].series.xData.indexOf(this.x);
+          var lastY = this.points[0].series.yData[index - 1];
+          var dif = this.y - lastY;
+          var r =
+            Highcharts.dateFormat("%A %b %e, %H:%M:%S", new Date(this.x)) +
+            '<br><span style="color:black">\u25CF </span>' +
+            this.points[0].series.name +
+            ": <b>" +
+            Highcharts.numberFormat(this.y, 0);
+          if (dif < 0) {
+            r +=
+              '<span style="color:#ff0000;font-weight:bold;"> (' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          if (dif > 0) {
+            r +=
+              '<span style="color:#00bb00;font-weight:bold;"> (+' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          return r;
+        },
+      },
+      series: [
+        {
+          showInLegend: false,
+          name: "Followers",
+          marker: { enabled: false },
+          color: "blue",
+          backgroundColor: "blue",
+          lineWidth: 3,
+        },
+      ],
+    });
+
+    fetch(`https://mixerno.space/api/twitter-user-counter/user/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+        document.getElementById("name").textContent = data.user[0].count;
+        document.getElementById("avatar").src = data.user[1].count;
+    });
+
+    setInterval(() => {
+    fetch(`https://api.subscriberwars.space/twitter/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      subscribers.innerHTML= data.followers
+
+          if (chart.series[0].points.length === 3600)
+            chart.series[0].data[0].remove();
+          chart.series[0].addPoint([Date.now(), chart.innerHTML= data.followers]);
+        });
+    }, 2000);
+    </script>
+</html>
