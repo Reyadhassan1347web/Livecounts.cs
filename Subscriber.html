@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>Livecounts.cs - YouTube Subscriber Count</title>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <link rel="icon" type="image/png" href="File.png" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Comaptible" content="IE=edge" />
@@ -16,11 +17,12 @@
     <body>
       <img src="File.png" 
       alt="" 
+      class="rounded-full h-40 absolute top-[108px]"
       id="avatar"
       width="150"
       />
       <p id="name" onclick="search()">Loading...</p>
-     <span id="count" class="odometer">0</span>
+     <span id="subscribers" class="odometer">0</span>
      <h2 class="subheader">
         Subscribers <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 12">
           <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
@@ -29,11 +31,102 @@
      <style>
       a { size: 50px; }
     </style>
+    <div id="chart" class="w-full">
+    </div>
     </body>
     <script>
     const urlParams = new URLSearchParams(window.location.search);
     var id = urlParams.get("id") || "UCX6OQ3DkcsbYNE6H8uQQuVA";
     var count = 0;
+
+    const lineColor = "#858585";
+    const chart = new Highcharts.chart({
+      chart: {
+        renderTo: "chart",
+        type: "line",
+        zoomType: "x",
+        backgroundColor: "transparent",
+        plotBorderColor: "transparent",
+        animation: true,
+      },
+      title: {
+        text: "",
+      },
+      xAxis: {
+        type: "datetime",
+        tickPixelInterval: 500,
+        labels: {
+          style: {
+            color: lineColor,
+          },
+        },
+        gridLineColor: lineColor,
+        lineColor: lineColor,
+        minorGridLineColor: "#858585",
+        tickColor: lineColor,
+        title: {
+          style: {
+            color: lineColor,
+          },
+        },
+      },
+      yAxis: {
+        title: {
+          text: "",
+        },
+        labels: {
+          style: {
+            color: lineColor,
+          },
+        },
+        gridLineColor: lineColor,
+        lineColor: lineColor,
+        minorGridLineColor: "#858585",
+        tickColor: lineColor,
+      },
+      credits: {
+        enabled: true,
+        text: "Livecounts.tk",
+        href: "https://livecounts.tk",
+      },
+      tooltip: {
+        shared: true,
+        formatter: function () {
+          var index = this.points[0].series.xData.indexOf(this.x);
+          var lastY = this.points[0].series.yData[index - 1];
+          var dif = this.y - lastY;
+          var r =
+            Highcharts.dateFormat("%A %b %e, %H:%M:%S", new Date(this.x)) +
+            '<br><span style="color:black">\u25CF </span>' +
+            this.points[0].series.name +
+            ": <b>" +
+            Highcharts.numberFormat(this.y, 0);
+          if (dif < 0) {
+            r +=
+              '<span style="color:#ff0000;font-weight:bold;"> (' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          if (dif > 0) {
+            r +=
+              '<span style="color:#00bb00;font-weight:bold;"> (+' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          return r;
+        },
+      },
+      series: [
+        {
+          showInLegend: false,
+          name: "MrBeast",
+          marker: { enabled: false },
+          color: "#f00",
+          backgroundColor: "white",
+          lineWidth: 3,
+        },
+      ],
+    });
 
    fetch(`https://mixerno.space/api/youtube-channel-counter/user/${id}`)
   .then((res) => res.json())
@@ -42,22 +135,16 @@
     document.getElementById("avatar").src = data.user[1].count;
   });
 
-    function data() {
+  setInterval(() => {
       fetch(`https://livecounts.xyz/api/youtube-live-subscriber-count/live/${id}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
-          count = data.counts[0]
+          document.getElementById("subscribers").textContent = data.counts[0];
+
+          if (chart.series[0].points.length === 3600)
+            chart.series[0].data[0].remove();
+          chart.series[0].addPoint([Date.now(), data.counts[0]]);
         });
-    }
-
-    function render() {
-      document.getElementById("count").innerHTML = count;
-    }
-
-    setInterval(() => {
-      data();
-      render();
     }, 2000);
     </script>
 </html>
