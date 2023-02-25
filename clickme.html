@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Livecounts.cs - Clicker</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="odometer-theme-minimal.min.css" />
+    <script src="odometer.js"></script>
+    <link rel="stylesheet" href="clickme.css" />
+</head>
+<body>
+    <img 
+    src="File.png" 
+    alt="LC.CS Logo" 
+    id="avatar"
+    width="150"
+    />
+    <span id="count" class="odometer">0</span>  
+    <button id="button" class="clickme" onclick="Cookie()">Click = 1 Cookie!</button>
+</body>
+<script>
+      function Cookie() {
+           fetch("https://reyadhassan1347web.github.io/Livecounts.cs.github.io/click.htm");
+       }
+
+        setInterval(() => {
+      fetch("https://reyadhassan1347web.github.io/Livecounts.cs.github.io/clicks.json")
+      .then((res) => res.json())
+        .then(
+          (data) => ( console.log(data), document.getElementById("count").innerHTML = data.clicks)
+        );
+    }, 2000);
+</script>
+</html>

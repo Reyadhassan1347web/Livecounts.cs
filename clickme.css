@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+body {
+    text-align: center;
+    background-color: black;
+}
+
+#count {
+    width: 100%;
+    margin-top: -5px;
+    color: white;
+    font-family: "Roboto";
+    font-size: 120pt;
+}
+
+#button {
+    font-family: "Roboto";
+    border-color: rgb(255, 0, 0);
+    background-color: black;
+    color: white;
+    transition: 250ms;
+}
+
+#button:hover {
+    background-color: red;
+    color: #000000;
+}
+
+#avatar {
+    margin-top: 250px;
+    border-radius: 50%;
+}
