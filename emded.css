@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+:root {
+    --text-color: #fff;
+    --font: "Roboto"
+}
+
+body {
+    background-color: black;
+    color: var(--text-color);
+    font-family: var(--font);
+    margin: 0px;
+}
+
+#name {
+    position: absolute;
+    top: -30px;
+    left: 215px;
+    font-size: 40px;
+}
+
+#count {
+    position: absolute;
+    top: 45px;
+    left: 215px;
+    font-size: 120px;
+}
+
+#avatar {
+    border-radius: 30%;
+    border-style: groove;
+  }
