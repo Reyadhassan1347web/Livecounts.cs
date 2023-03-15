@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+:root {
+    --text-color: #fff;
+    --font: "Roboto"
+}
+
+body {
+    background-color: black;
+    color: var(--text-color);
+    font-family: var(--font);
+    margin: 0px;
+}
+
+#name {
+    position: absolute;
+    top: -25px;
+    left: 215px;
+    font-size: 40px;
+    font-family: "Ubuntu";
+}
+
+#count {
+    position: absolute;
+    top: 45px;
+    left: 215px;
+    font-size: 120px;
+}
+
+#avatar {
+    position: absolute; 
+    top: 10px; 
+    left: 5px; 
+    object-fit: cover;
+    margin-top:0 !important;
+    height: 170px !important;
+    width: 200px !important;
+    border: solid 0px red; 
+    border-radius: 50%;
+    position: relative;
+    z-index: 10;
+    border-radius: 5%;
+    overflow: hidden;
+  }

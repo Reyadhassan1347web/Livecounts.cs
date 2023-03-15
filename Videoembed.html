@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Livecounts.cs - Embed Video</title>
+    <link rel="icon" type="image/png" href="File.png" />
+    <link rel="stylesheet" href="odometer-theme-minimal.min.css" />
+    <script src="odometer.js"></script>
+    <link rel="stylesheet" href="videoembed.css" />
+</head>
+<body>
+    <img src="File.png" 
+    alt="" 
+    id="avatar"
+    width="200"
+    />
+    <h1 id="name">Loading...</h1>
+    <span id="count" class="odometer"></span>
+    <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get("id") || "lglIQkCHO0g";
+    var count = 0;
+
+    fetch(`https://mixerno.space/api/youtube-video-counter/user/${id}`)
+  .then((res) => res.json())
+  .then((data) => {
+    document.getElementById("name").textContent = data.user[0].count;
+    document.getElementById("avatar").src = data.user[1].count;
+  });
+    
+    function data() {
+      fetch(`https://livecounts.xyz/api/youtube-live-view-count/live/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          count = data.counts[0];
+        });
+    }
+
+    function render() {
+      document.getElementById("count").innerHTML = count;
+    }
+
+    setInterval(() => {
+      data();
+      render();
+    }, 2000);
+    </script>
+</body>
+</html>

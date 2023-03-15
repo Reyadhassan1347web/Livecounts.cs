@@ -1,0 +1,55 @@
+body {
+    font-family: ubuntu;
+    font-weight: 700;
+    color: white;
+  }
+  
+  .card {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    background: #111;
+    border-radius: 10px;
+    width: 89.2%;
+    height: 150px;
+    margin-left: 5vw;
+    margin-bottom: 10px;
+  }
+  
+  .card,
+  p {
+    text-align: center;
+  }
+  
+  .iconify {
+    font-size: 80px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+    transition: 250ms;
+  }
+  
+  a:hover {
+    color: #2c86ec;
+  }
+  
+  .btn {
+    font-family: "Roboto";
+    color: white;
+    background-color: #1b1b1b;
+    border: #1b1b1b;
+  
+    transition-property: transform;
+    transition-duration: 2s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+  }
+  
+  .btn:hover {
+    transform: translateY(-5px);
+  }
