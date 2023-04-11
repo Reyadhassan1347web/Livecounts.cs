@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+body {
+    text-align: center;
+    background-color: #1b1b1b;
+}
+
+body.light {
+  background-color: #fff;
+  color: black;
+}
+
+#subscribers {
+  width: 100%;
+  margin-top: -65px;
+  text-align: center;
+  color: white;
+  font-family: "Roboto";
+  font-size: 120pt;
+}
+
+.header {
+  color: rgb(255, 255, 255);
+  font-size: 2.5vw;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.subheader {
+  font-size: 1.9vw;
+  color: #afadad;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  margin-top: -5px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#user {
+  width: 100%;
+  margin-top: -50px;
+  color: whitesmoke;
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 40pt;
+}
+
+#avatar {
+  margin-bottom: 50px;
+  border-radius: 30%;
+  border-style: groove;
+}
+
+a {
+  font-family: "Ubuntu";
+  width: 100%;
+  text-decoration: none;
+  color: white;
+  transition: 250ms;
+}
+
+a:hover {
+  color: #00ff40;
+}
+
+body.light #light {
+  display: none;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0px;
+  height: 40px;
+  width: 100%;
+  background: #246;
+  color: white;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: right;
+}
+
+
+body:not(.light) #dark {
+  display: none;
+}
+
+input[type="radio"] {
+  display: none;
+}
