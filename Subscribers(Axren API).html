@@ -136,14 +136,16 @@
   });
 
   setInterval(() => {
-      fetch(`https://livecounts.tk/api/youtube/channel/${id}`)
+        fetch(`https://axern.space/api/youtube/channel/${id}`)
         .then((res) => res.json())
         .then((data) => {
-          document.getElementById("subscribers").textContent = data.counts.subscribers;
+          console.log(data)
+          console.log("get data")
+          document.getElementById("subscribers").textContent = data.estSubCount;
 
           if (chart.series[0].points.length === 3600)
             chart.series[0].data[0].remove();
-          chart.series[0].addPoint([Date.now(), data.counts.subscribers]);
+          chart.series[0].addPoint([Date.now(), data.estSubCount]);
         });
     }, 2000);
     </script>
