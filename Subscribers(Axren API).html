@@ -136,7 +136,7 @@
   });
 
   setInterval(() => {
-        fetch(`https://axern.space/api/youtube/channel/${id}`)
+        fetch(`https://axern.space/api/get?platform=youtube&type=channel&id=${id}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
