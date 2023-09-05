@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="counts.css" />
     <script src="Livecounts.js"></script>
   </head>
-    <body>
+       <body>
+      <div class="card">
       <img src="File.png" 
       alt="" 
       class="rounded-full h-40 absolute top-[108px]"
@@ -28,14 +29,29 @@
           <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
         </svg>
      </h2>
+    </div>
      <style>
       a { size: 50px; }
     </style>
+    <div class="card3">
+        <span id="Views" class="odometer">0</span>
+        <a id="Title">Views</a>
+      </div>
+      <div class="card4">
+        <span id="API" class="odometer">0</span>
+        <a id="Title">Subscribers API</a>
+      </div>
+      <div class="card5">
+        <span id="Video" class="odometer">0</span>
+        <a id="Title">Goal</a>
+      </div>
+    <div class="card2">
     <div id="chart" class="w-full">
     </div>
     <div>
 <p style="color: white; font-family: Roboto; text-align: center;">This Is A Backup Incase If LC.Xyz Goes Down!</p>
     </div>
+</div>
     </body>
     <script>
     const urlParams = new URLSearchParams(window.location.search);
@@ -139,6 +155,9 @@
           document.getElementById("name").textContent = data.user[0].count;
           document.getElementById("avatar").src = data.user[1].count;
           document.getElementById("subscribers").innerHTML = data.counts[0].count;
+          document.getElementById("Views").innerHTML = data.counts[3].count;
+          document.getElementById("Video").innerHTML = data.counts[1].count;
+          document.getElementById("API").innerHTML = data.counts[2].count;
 
           if (chart.series[0].points.length === 3600)
             chart.series[0].data[0].remove();
