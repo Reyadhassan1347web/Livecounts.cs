@@ -4,20 +4,23 @@ body {
 }
 .navbar {
   background-color: black;
+  border-style: solid;
+  border-radius: 0px;
+  border-color: #2e2e2e;
 }
 .navbar-brand span {
   font-family: "Ubuntu";
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: #ffffff;
   font-weight: bold;
   position: relative;
-  top: -30px;
+  top: -20px;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 .navbar-brand img {
-  width: 80px;
+  width: 60px;
   border-radius: 5px;
 }
 .nav-item {
@@ -153,4 +156,3 @@ button:hover {
   0 0 25px rgb(40, 219, 85), 0 0 50px rgb(40, 219, 85),
   0 0 100px rgb(40, 219, 85), 0 0 250px rgb(40, 219, 85);
 }
-
