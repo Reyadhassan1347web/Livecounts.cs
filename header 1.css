@@ -112,3 +112,45 @@ height: 30px;
   text-decoration: none;
   line-height: 2em;
 }
+
+button {
+  font-family: "Roboto"; 
+  color: rgb(37, 53, 202);
+  padding: 0.75em 3em; 
+  cursor: pointer; 
+  margin: 0px; 
+  border-radius: 100vw; 
+  border-style: solid;
+  border-color: rgb(37, 53, 202); 
+  box-shadow: 0 0 5px rgb(37, 53, 202), 0 0 25px rgb(37, 53, 202);
+  background: black;
+  margin-left: 250px; 
+  border-radius: 5px; 
+  margin-top: -52px; 
+  transition: 250ms;
+  overflow: hidden;
+}
+
+button:hover {
+  background: rgb(37, 53, 202);
+  color: white;
+  box-shadow:  0 0 5px rgb(37, 53, 202),
+  0 0 25px rgb(37, 53, 202), 0 0 50px rgb(37, 53, 202),
+  0 0 100px rgb(37, 53, 202), 0 0 250px rgb(37, 53, 202);
+}
+
+#button2 {
+  border-color: rgb(40, 219, 85); 
+  overflow: hidden;
+  box-shadow: 0 0 5px rgb(40, 219, 85), 0 0 25px rgb(40, 219, 85);
+  color: rgb(40, 219, 85);
+}
+
+#button2:hover {
+  background: rgb(40, 219, 85);
+  color: white;
+  box-shadow:  0 0 5px rgb(40, 219, 85),
+  0 0 25px rgb(40, 219, 85), 0 0 50px rgb(40, 219, 85),
+  0 0 100px rgb(40, 219, 85), 0 0 250px rgb(40, 219, 85);
+}
+
