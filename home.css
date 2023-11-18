@@ -1,7 +1,8 @@
 body {
-    font-family: ubuntu;
+    font-family: "ubuntu";
     font-weight: 700;
     color: white;
+    margin: 0px;
 }
 
 .card {
@@ -12,11 +13,19 @@ body {
     font-size: 25px;
     background: #111;
     border-radius: 10px;
+    border-color: #ffffff;
+    border-style: solid;
     width: 89.2%;
     height: 150px;
     margin-left: 5vw;
     margin-bottom: 10px;
+    transition: 250ms;
   }
+
+.card:hover {
+    background-color: rgb(73, 73, 73);
+    border-color: #ffffff;
+}
   
   .card,
   p {
@@ -30,11 +39,12 @@ body {
   a {
     text-decoration: none;
     color: white;
-    transition: 250ms;
+    transition: 100ms;
   }
   
   a:hover {
     color: #2c86ec;
+    text-shadow: 5,5,5px;
   }
 
 ::-webkit-scrollbar {
@@ -57,7 +67,7 @@ body {
     background-color: #1b1b1b;
     border: #1b1b1b;
 
-    transition-property: transform;
+    transition-property: "transform";
     transition-duration: 2s;
     transition-timing-function: ease;
     transition-delay: 0s;
