@@ -15,24 +15,40 @@
     <script src="Livecounts Twitter.js"></script>
   </head>
     <body>
-      <img src="File.png" 
-      alt="" 
-      class="rounded-full h-40 absolute top-[108px]"
-      id="avatar"
-      width="150"
-      />
-      <p id="name" onclick="search()">Loading...</p>
-     <span id="subscribers" class="odometer">0</span>
-     <h2 class="subheader">
-        Followers <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 12">
-          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-        </svg>
-     </h2>
-     <style>
-      a { size: 50px; }
-    </style>
-    <div id="chart" class="w-full">
+       <div class="card">  //just starting
+        <img src="File.png" 
+        alt="" 
+        class="rounded-full h-40 absolute top-[108px]"
+        id="avatar"
+        width="150"
+        />
+        <p id="name" onclick="search()">Loading...</p>
+       <span id="subscribers" class="odometer">0</span>
+       <h2 class="subheader">
+          Followers <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 12">
+            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+          </svg>
+       </h2>
+      </div>
+       <style>
+        a { size: 50px; }
+      </style>
+      <div class="card3">
+      <span id="Views" class="odometer">0</span>
+      <a id="Title">Following</a>
     </div>
+    <div class="card4">
+      <span id="API" class="odometer">0</span>
+      <a id="Title">Liked Tweets</a>
+    </div>
+    <div class="card5">
+      <span id="Video" class="odometer">0</span>
+      <a id="Title">Media</a>
+    </div>
+      <div class="card2">
+      <div id="chart" class="w-full">
+      </div>
+      </div>
     </body>
     <script>
     const urlParams = new URLSearchParams(window.location.search);
@@ -43,7 +59,7 @@
     const chart = new Highcharts.chart({
       chart: {
         renderTo: "chart",
-        type: "line",
+        type: "spline",
         zoomType: "x",
         backgroundColor: "transparent",
         plotBorderColor: "transparent",
@@ -128,24 +144,23 @@
       ],
     });
 
-    fetch(`https://mixerno.space/api/twitter-user-counter/user/${id}`)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data)
-        document.getElementById("name").textContent = data.user[0].count;
-        document.getElementById("avatar").src = data.user[1].count;
-    });
+      //AAAAAA
 
     setInterval(() => {
-    fetch(`https://api.subscriberwars.space/twitter/${id}`)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      subscribers.innerHTML= data.followers
+      fetch(`https://mixerno.space/api/twitter-user-counter/user/${id}`) //Just Switched API :P
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+        document.getElementById("name").textContent = data.user[0].count;
+        document.getElementById("avatar").src = data.user[1].count;
+        document.getElementById("subscribers").innerHTML = data.counts[0].count;
+        document.getElementById("Views").innerHTML = data.counts[2].count;
+        document.getElementById("API").innerHTML = data.counts[5].count;
+        document.getElementById("Video").innerHTML = data.counts[3].count;
 
-          if (chart.series[0].points.length === 3600)
+    if (chart.series[0].points.length === 3600)
             chart.series[0].data[0].remove();
-          chart.series[0].addPoint([Date.now(), chart.innerHTML= data.followers]);
+          chart.series[0].addPoint([Date.now(), data.counts[0].count]);
         });
     }, 2000);
     </script>
